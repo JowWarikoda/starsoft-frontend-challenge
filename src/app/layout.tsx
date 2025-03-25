@@ -1,11 +1,25 @@
+import "@/app/styles/globals.css";
+import "./globals.css";
+import CartOverlay from "@/app/components/CartOverlay";
+
+import ReduxProvider from "@/app/providers/Provider";
+import QueryProvider from "@/lib/ReactQueryProvider";
+
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
+    <ReduxProvider>
+      <QueryProvider>
+        <html>
+          <body>
+            <CartOverlay />
+            {children}
+          </body>
+        </html>
+      </QueryProvider>
+    </ReduxProvider>
   );
 }

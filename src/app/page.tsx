@@ -1,6 +1,11 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+import Marketplace from "@/app/components/Marketplace";
 
 export default function Home() {
-  return <div className={styles.page}></div>;
+  return (
+    <div>
+      <h1>StarSoft Marketplace</h1>
+      <Marketplace />;
+    </div>
+  );
 }
