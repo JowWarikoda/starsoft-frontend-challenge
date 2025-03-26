@@ -1,5 +1,4 @@
 import "@/app/styles/globals.css";
-import "./globals.css";
 import CartOverlay from "@/app/components/CartOverlay";
 
 import ReduxProvider from "@/app/providers/Provider";

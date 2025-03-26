@@ -5,14 +5,8 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
-  padding: 20px;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  font-family: Arial, sans-serif; /* Trocar fonte*/
+  background-color: #232323;
+  color: #333; /* Trocar color*/
+  padding: 20px; /* Talvez padding desnecessario */
 }
