@@ -1,6 +1,5 @@
 "use client";
 
-import { fetchNFTs } from "@/services/api";
 import Image from "next/image";
 import styles from "@/app/styles/CardNFT.module.css";
 

@@ -7,6 +7,7 @@
   text-align: center;
   color: white;
   width: 445px;
+  margin: 25px; /* margin temporaria */
 }
 
 .image {
@@ -32,14 +33,15 @@
 
 .priceContainer {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
-  margin-top: 10px 0;
+  padding: 30px;
 }
 
 .price {
   font-size: 1.25rem;
-  font-weight: bold;
+  font-weight: 600;
+  line-height: 110.00000000000001%;
   margin-left: 0.5rem;
   color: #f0f0f0;
 }
@@ -56,5 +58,6 @@
 }
 
 .buyButton:hover {
-  background-color: #e68900;
+  background-color: #e76a14;
+  transform: scale(1.04);
 }
