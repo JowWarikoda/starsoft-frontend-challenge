@@ -1,26 +1,45 @@
-import { useQuery } from "@tanstack/react-query";
-import { fetchNFTs } from "@/services/api";
+"use client";
+
+import { useState } from "react";
 import CardNFT from "@/app/components/CardNFT";
 
-export default function Marketplace() {
-  const {
-    data: nfts,
-    error,
-    isLoading,
-  } = useQuery({
-    queryKey: ["nfts"],
-    queryFn: fetchNFTs,
-  });
-  if (isLoading) return <p>Carregando NFTs...</p>;
-  if (error) return <p>Erro: {error.message}</p>;
+interface NFT {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  image: string;
+}
 
-  if (!Array.isArray(nfts)) return <p>Erro: Dados inválidos</p>;
+interface MarketplaceProps {
+  initialNFTs: NFT[];
+  allNFTs: NFT[]; // Todos os NFTs disponíveis (até 32)
+}
+
+export default function Marketplace({
+  initialNFTs,
+  allNFTs,
+}: MarketplaceProps) {
+  const [nfts, setNfts] = useState<NFT[]>(initialNFTs);
+  const [visibleCount, setVisibleCount] = useState(8);
+
+  const handleLoadMore = () => {
+    const newCount = visibleCount + 8;
+    setNfts(allNFTs.slice(0, newCount));
+    setVisibleCount(newCount);
+  };
 
   return (
-    <div className="grid">
-      {nfts.map((nft) => (
-        <CardNFT key={nft.id} nft={nft} />
-      ))}
+    <div>
+      <div className="grid">
+        {nfts.map((nft) => (
+          <CardNFT key={nft.id} nft={nft} />
+        ))}
+      </div>
+
+      {visibleCount < allNFTs.length && (
+        <button onClick={handleLoadMore}>Carregar Mais</button>
+      )}
     </div>
   );
 }

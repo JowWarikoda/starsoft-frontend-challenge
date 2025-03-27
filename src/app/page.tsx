@@ -1,11 +1,12 @@
-"use client";
-
 import Marketplace from "@/app/components/Marketplace";
+import { fetchNFTs } from "@/services/api";
 
-export default function Home() {
+export default async function Home() {
+  const nfts = await fetchNFTs(); // Pega os NFTs no servidor
+
   return (
     <main>
-      <Marketplace />
+      <Marketplace initialNFTs={nfts.slice(0, 8)} allNFTs={nfts.slice(0, 32)} />
     </main>
   );
 }
