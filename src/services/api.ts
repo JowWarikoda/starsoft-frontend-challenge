@@ -1,6 +1,6 @@
 export async function fetchNFTs() {
   const response = await fetch(
-    "https://starsoft-challenge-7dfd4a56a575.herokuapp.com/v1/products"
+    "https://starsoft-challenge-7dfd4a56a575.herokuapp.com/v1/products?limit=32"
   );
 
   if (!response.ok) {

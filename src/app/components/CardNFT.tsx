@@ -1,10 +1,12 @@
 "use client";
 
+import { useAppDispatch } from "@/app/redux/store";
+import { addToCart } from "@/app/redux/cartSlice";
 import Image from "next/image";
 import styles from "@/app/styles/CardNFT.module.css";
 
 interface NFT {
-  id: number;
+  id: string;
   name: string;
   description: string;
   price: number;
@@ -14,7 +16,14 @@ interface NFT {
 interface NFTCardProps {
   nft: NFT;
 }
+
 export default function CardNFT({ nft }: NFTCardProps) {
+  const dispatch = useAppDispatch();
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(nft));
+  };
+
   return (
     <div className={styles.card}>
       <div className={styles.imageContainer}>
@@ -35,12 +44,14 @@ export default function CardNFT({ nft }: NFTCardProps) {
       {/* Preco */}
       <div className={styles.priceContainer}>
         <span className={styles.price}>
-          <img src="/img/eth logo.svg" alt="ETH Icon" />
+          <img src="/img/eth-icon.svg" alt="ETH Icon" />
           {nft.price} ETH
         </span>
       </div>
 
-      <button className={styles.buyButton}>Comprar</button>
+      <button className={styles.buyButton} onClick={handleAddToCart}>
+        Comprar
+      </button>
     </div>
   );
 }

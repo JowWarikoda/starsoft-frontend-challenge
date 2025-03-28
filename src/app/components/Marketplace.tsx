@@ -4,7 +4,7 @@ import { useState } from "react";
 import CardNFT from "@/app/components/CardNFT";
 
 interface NFT {
-  id: number;
+  id: string;
   name: string;
   description: string;
   price: number;
@@ -37,9 +37,14 @@ export default function Marketplace({
         ))}
       </div>
 
-      {visibleCount < allNFTs.length && (
-        <button onClick={handleLoadMore}>Carregar Mais</button>
-      )}
+      <button
+        onClick={handleLoadMore}
+        disabled={visibleCount >= allNFTs.length}
+      >
+        {visibleCount >= allNFTs.length
+          ? "Todos os NFTs carregados"
+          : "Carregar Mais"}
+      </button>
     </div>
   );
 }
