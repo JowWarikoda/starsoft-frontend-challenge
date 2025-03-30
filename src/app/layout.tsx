@@ -1,8 +1,15 @@
 import "@/app/styles/globals.css";
-import CartOverlay from "@/app/components/CartOverlay";
-
+import { Poppins } from "next/font/google";
 import ReduxProvider from "@/app/providers/Provider";
 import QueryProvider from "@/lib/ReactQueryProvider";
+import Footer from "@/app/components/Footer/Footer";
+import Header from "@/app/components/Header/Header";
+
+const poppins = Poppins({
+  weight: ["300", "400", "500", "600", "700"], // Escolha os pesos que vai usar
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export default function RootLayout({
   children,
@@ -13,9 +20,10 @@ export default function RootLayout({
     <ReduxProvider>
       <QueryProvider>
         <html>
-          <body>
-            <CartOverlay />
+          <body className="{poppins.className}">
+            <Header />
             {children}
+            <Footer />
           </body>
         </html>
       </QueryProvider>

@@ -1,0 +1,27 @@
+@import "/src/app/styles/variables";
+
+.marketplace-container {
+  display: grid;
+  grid-template-columns: repeat(4, 350px);
+  gap: 25px;
+  justify-content: center;
+  padding: 32px;
+}
+
+.loadMore-button {
+  background-color: $background-light;
+  padding: 30px 299px;
+  border-radius: $border-radius;
+  border: none;
+  height: 86px;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+
+  .loadMore-text {
+    color: $text-white;
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 26px;
+  }
+}

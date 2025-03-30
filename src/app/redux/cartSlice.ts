@@ -29,11 +29,8 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<NFT>) => {
-      const exists = state.items.find((item) => item.id === action.payload.id);
-      if (!exists) {
-        state.items.push(action.payload);
-        localStorage.setItem("cart", JSON.stringify(state.items));
-      }
+      state.items.push(action.payload);
+      localStorage.setItem("cart", JSON.stringify(state.items));
     },
     removeFromCart: (state, action: PayloadAction<string>) => {
       state.items = state.items.filter((item) => item.id !== action.payload);

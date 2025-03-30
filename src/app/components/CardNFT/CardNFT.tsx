@@ -3,7 +3,7 @@
 import { useAppDispatch } from "@/app/redux/store";
 import { addToCart } from "@/app/redux/cartSlice";
 import Image from "next/image";
-import styles from "@/app/styles/CardNFT.module.css";
+import "@/app/components/CardNFT/CardNFT.scss";
 
 interface NFT {
   id: string;
@@ -25,31 +25,31 @@ export default function CardNFT({ nft }: NFTCardProps) {
   };
 
   return (
-    <div className={styles.card}>
-      <div className={styles.imageContainer}>
+    <div className="product-card">
+      <div className="product-image">
         <Image
           src={nft.image}
           alt={nft.name}
           width={289}
           height={258}
-          className={styles.image}
+          className="API-image"
           priority
         />
       </div>
 
-      {/* Nome e Descricao */}
-      <h4 className={styles.name}>{nft.name}</h4>
-      <p className={styles.description}>{nft.description}</p>
-
-      {/* Preco */}
-      <div className={styles.priceContainer}>
-        <span className={styles.price}>
-          <img src="/img/eth-icon.svg" alt="ETH Icon" />
-          {nft.price} ETH
-        </span>
+      {/* Nome e Descrição */}
+      <div className="product-info">
+        <h3>{nft.name}</h3>
+        <p>{nft.description}</p>
       </div>
 
-      <button className={styles.buyButton} onClick={handleAddToCart}>
+      {/* Preço */}
+      <div className="product-price">
+        <Image src="/img/eth-icon.svg" alt="ETH Icon" width={24} height={24} />
+        <span>{nft.price} ETH</span>
+      </div>
+
+      <button className="buy-button" onClick={handleAddToCart}>
         Comprar
       </button>
     </div>

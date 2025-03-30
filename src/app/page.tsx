@@ -1,4 +1,4 @@
-import Marketplace from "@/app/components/Marketplace";
+import Marketplace from "@/app/components/Marketplace/Marketplace";
 import { fetchNFTs } from "@/services/api";
 
 export default async function Home() {

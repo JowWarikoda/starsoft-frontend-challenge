@@ -1,0 +1,114 @@
+@import "/src/app/styles/variables";
+
+.cart-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 100vh;
+  background: $background-dark;
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+
+  &.open {
+    transform: translateX(0);
+    z-index: 999;
+  }
+
+  .cart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $background-medium;
+
+    h2 {
+      font-size: 1.4rem;
+      color: $text-white;
+    }
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  .cart-items {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-top: 16px;
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      background: $background-medium;
+      border-radius: $border-radius;
+      padding: 12px;
+      margin-bottom: 12px;
+
+      img {
+        border-radius: $border-radius;
+      }
+
+      .cart-info {
+        flex-grow: 1;
+        margin-left: 12px;
+
+        h4 {
+          font-size: 1rem;
+          color: $text-white;
+        }
+
+        .price-container {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 1rem;
+          color: $text-white;
+        }
+      }
+
+      .remove-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .cart-footer {
+    padding-top: 16px;
+    border-top: 1px solid $background-medium;
+
+    h3 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 1.2rem;
+      color: $text-white;
+    }
+
+    .checkout-button {
+      background: $primary-color;
+      border: none;
+      border-radius: $border-radius;
+      padding: 12px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: $text-white;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 12px;
+      transition: 0.3s;
+
+      &:hover {
+        background: darken($primary-color, 10%);
+      }
+    }
+  }
+}

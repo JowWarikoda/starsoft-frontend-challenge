@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import CardNFT from "@/app/components/CardNFT";
+import CardNFT from "@/app/components/CardNFT/CardNFT";
+import "@/app/components/Marketplace/Marketplace.scss";
 
 interface NFT {
   id: string;
@@ -13,7 +14,7 @@ interface NFT {
 
 interface MarketplaceProps {
   initialNFTs: NFT[];
-  allNFTs: NFT[]; // Todos os NFTs disponíveis (até 32)
+  allNFTs: NFT[];
 }
 
 export default function Marketplace({
@@ -31,19 +32,22 @@ export default function Marketplace({
 
   return (
     <div>
-      <div className="grid">
+      <div className="marketplace-container">
         {nfts.map((nft) => (
           <CardNFT key={nft.id} nft={nft} />
         ))}
       </div>
 
       <button
+        className="loadMore-button"
         onClick={handleLoadMore}
         disabled={visibleCount >= allNFTs.length}
       >
-        {visibleCount >= allNFTs.length
-          ? "Todos os NFTs carregados"
-          : "Carregar Mais"}
+        <p className="loadMore-text">
+          {visibleCount >= allNFTs.length
+            ? "Você já viu tudo"
+            : "Carregar mais"}
+        </p>
       </button>
     </div>
   );
