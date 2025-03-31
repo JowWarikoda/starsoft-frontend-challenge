@@ -24,7 +24,10 @@ export default function CartOverlay({ isOpen, setIsOpen }: CartOverlayProps) {
 
       <div className={`cart-overlay ${isOpen ? "open" : ""}`}>
         <div className="cart-header">
-          <button onClick={() => setIsOpen(false)}>
+          <button
+            className="cart-header-arrow-icon"
+            onClick={() => setIsOpen(false)}
+          >
             <Image
               src="/img/Arrow-Left-icon.svg"
               alt="Arrow Icon"
@@ -44,11 +47,14 @@ export default function CartOverlay({ isOpen, setIsOpen }: CartOverlayProps) {
                 <Image
                   src={item.image}
                   alt={item.name}
-                  width={60}
-                  height={60}
+                  width={139}
+                  height={139}
                 />
                 <div className="cart-info">
-                  <h4>{item.name}</h4>
+                  <div className="cart-item-info-container">
+                    <p className="cart-item-name">{item.name}</p>
+                    <p className="cart-item-description">{item.description}</p>
+                  </div>
                   <div className="price-container">
                     <Image
                       src="/img/eth-icon.svg"
@@ -58,26 +64,26 @@ export default function CartOverlay({ isOpen, setIsOpen }: CartOverlayProps) {
                     />
                     <p>{item.price} ETH</p>
                   </div>
+                  <button
+                    className="trash-icon"
+                    onClick={() => dispatch(removeFromCart(item.id))}
+                  >
+                    <Image
+                      src="/img/Trash-icon.svg"
+                      alt="Trash Icon"
+                      height={22}
+                      width={22}
+                    />
+                  </button>
                 </div>
-                <button
-                  className="trash-icon"
-                  onClick={() => dispatch(removeFromCart(item.id))}
-                >
-                  <Image
-                    src="/img/Trash-icon.svg"
-                    alt="Trash Icon"
-                    height={22}
-                    width={22}
-                  />
-                </button>
               </div>
             ))}
           </div>
         )}
 
         <div className="cart-footer">
-          <h3>
-            TOTAL:
+          <div className="cart-footer-total">
+            <span className="total-text">TOTAL:</span>
             <div className="cart-footer-price">
               <Image
                 src="/img/eth-icon.svg"
@@ -85,9 +91,9 @@ export default function CartOverlay({ isOpen, setIsOpen }: CartOverlayProps) {
                 height={34}
                 width={34}
               />{" "}
-              {totalPrice} ETH
+              <span className="total-price">{totalPrice} ETH </span>
             </div>
-          </h3>
+          </div>
           <button className="checkout-button">Finalizar Compra</button>
         </div>
       </div>

@@ -29,6 +29,13 @@
     height: 60px;
     width: 100%;
 
+    .cart-header-arrow-icon {
+      background-color: #373737;
+      width: 60px;
+      height: 60px;
+      border-radius: 30px;
+    }
+
     h2 {
       font-size: 1.4rem;
       color: $text-white;
@@ -54,20 +61,40 @@
       align-items: center;
       background: $background-medium;
       border-radius: $border-radius;
-      padding: 12px;
+      padding: 17px 30px;
       margin-bottom: 12px;
+      height: 200px;
+      width: 619px;
 
       img {
         border-radius: $border-radius;
       }
 
       .cart-info {
-        flex-grow: 1;
-        margin-left: 12px;
+        margin: 0px 30px;
 
-        h4 {
-          font-size: 1rem;
+        .cart-item-info-container {
+          margin-bottom: 5px;
+        }
+
+        .cart-item-name {
+          font-size: 1.125rem;
+          font-weight: 500;
+          line-height: 140%;
           color: $text-white;
+        }
+
+        .cart-item-description {
+          display: -webkit-box;
+          font-size: 0.75rem;
+          font-weight: 300;
+          color: $text-light;
+          line-height: 12px;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+          line-clamp: 1;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
 
         .price-container {
@@ -79,11 +106,14 @@
         }
       }
       .trash-icon {
+        cursor: pointer;
         border: 1.3px solid;
         background-color: $primary-color;
         width: 43px;
         height: 43px;
         border-radius: 43px;
+        justify-content: center;
+        align-items: center;
       }
     }
   }
@@ -95,13 +125,37 @@
   .cart-footer {
     padding-top: 16px;
     border-top: 1px solid $background-medium;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
 
-    h3 {
+    .cart-footer-total {
       display: flex;
       align-items: center;
       justify-content: space-between;
       font-size: 1.2rem;
       color: $text-white;
+      width: 100%;
+      padding: 58px 20.5px;
+    }
+
+    .total-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 26px;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    .total-price {
+      font-weight: 600;
+      font-size: 1.5rem;
+      line-height: 110%;
+      color: #f0f0f0;
+      text-transform: uppercase;
     }
 
     .cart-footer-price {
