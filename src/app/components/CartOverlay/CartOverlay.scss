@@ -34,6 +34,9 @@
       width: 60px;
       height: 60px;
       border-radius: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     h2 {
@@ -59,7 +62,7 @@
     .cart-item {
       display: flex;
       align-items: center;
-      background: $background-medium;
+      background: #2b2b2b;
       border-radius: $border-radius;
       padding: 17px 30px;
       margin-bottom: 12px;
@@ -72,9 +75,13 @@
 
       .cart-info {
         margin: 0px 30px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 13px;
 
         .cart-item-info-container {
-          margin-bottom: 5px;
+          width: 100%;
         }
 
         .cart-item-name {
@@ -105,6 +112,36 @@
           color: $text-white;
         }
       }
+
+      .checkout-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .quantity-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: $background-dark;
+        padding: 12px 8px;
+        border-radius: $border-radius;
+        width: 115px;
+        height: 49px;
+      }
+
+      .quantity-text {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: $text-white;
+        line-height: 20px;
+      }
+
+      .quantity-btn {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+      }
+
       .trash-icon {
         cursor: pointer;
         border: 1.3px solid;
@@ -112,6 +149,7 @@
         width: 43px;
         height: 43px;
         border-radius: 43px;
+        display: flex;
         justify-content: center;
         align-items: center;
       }
@@ -119,12 +157,12 @@
   }
 
   .empty-cart {
+    color: $text-white;
     text-align: center;
   }
 
   .cart-footer {
     padding-top: 16px;
-    border-top: 1px solid $background-medium;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -147,7 +185,7 @@
       letter-spacing: -1px;
       line-height: 26px;
       text-transform: uppercase;
-      color: #ffffff;
+      color: $text-white;
     }
 
     .total-price {
@@ -162,6 +200,14 @@
       display: flex;
       align-items: center;
       gap: 10px;
+    }
+
+    .checkout-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
     }
 
     .checkout-button {

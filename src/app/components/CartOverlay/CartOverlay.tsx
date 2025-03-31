@@ -1,9 +1,12 @@
 "use client";
 
 import { useAppSelector, useAppDispatch } from "@/app/redux/store";
-import { removeFromCart } from "@/app/redux/cartSlice";
+import {
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+} from "@/app/redux/cartSlice";
 import Image from "next/image";
-import { useState, useEffect } from "react";
 import "@/app/components/CartOverlay/CartOverlay.scss";
 
 interface CartOverlayProps {
@@ -14,7 +17,10 @@ interface CartOverlayProps {
 export default function CartOverlay({ isOpen, setIsOpen }: CartOverlayProps) {
   const cartItems = useAppSelector((state) => state.cart.items);
   const dispatch = useAppDispatch();
-  const totalPrice = cartItems.reduce((sum, item) => sum + item.price, 0);
+  const totalPrice = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
 
   return (
     <>
@@ -64,17 +70,46 @@ export default function CartOverlay({ isOpen, setIsOpen }: CartOverlayProps) {
                     />
                     <p>{item.price} ETH</p>
                   </div>
-                  <button
-                    className="trash-icon"
-                    onClick={() => dispatch(removeFromCart(item.id))}
-                  >
-                    <Image
-                      src="/img/Trash-icon.svg"
-                      alt="Trash Icon"
-                      height={22}
-                      width={22}
-                    />
-                  </button>
+                  <div className="checkout-container">
+                    <div className="quantity-container">
+                      <button
+                        className="quantity-btn"
+                        onClick={() => dispatch(decreaseQuantity(item.id))}
+                      >
+                        <Image
+                          src="/img/minus-icon.svg"
+                          alt="Minus Icon"
+                          height={16}
+                          width={16}
+                        />
+                      </button>
+
+                      <p className="quantity-text"> {item.quantity} </p>
+
+                      <button
+                        className="quantity-btn"
+                        onClick={() => dispatch(increaseQuantity(item.id))}
+                      >
+                        <Image
+                          src="/img/add-icon.svg"
+                          alt="Add Icon"
+                          height={16}
+                          width={16}
+                        />
+                      </button>
+                    </div>
+                    <button
+                      className="trash-icon"
+                      onClick={() => dispatch(removeFromCart(item.id))}
+                    >
+                      <Image
+                        src="/img/Trash-icon.svg"
+                        alt="Trash Icon"
+                        height={22}
+                        width={22}
+                      />
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
@@ -90,8 +125,8 @@ export default function CartOverlay({ isOpen, setIsOpen }: CartOverlayProps) {
                 alt="ETH Icon"
                 height={34}
                 width={34}
-              />{" "}
-              <span className="total-price">{totalPrice} ETH </span>
+              />
+              <p className="total-price">{totalPrice} ETH </p>
             </div>
           </div>
           <button className="checkout-button">Finalizar Compra</button>
