@@ -1,6 +1,10 @@
 @import "/src/app/styles/variables";
 
 .product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   background: $background-medium;
   border-radius: $border-radius;
   padding: 24.5px;
@@ -25,6 +29,13 @@
     }
   }
 
+  .product-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+  }
   .product-info {
     text-align: left;
     margin-top: 12px;

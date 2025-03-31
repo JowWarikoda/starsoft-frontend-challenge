@@ -1,11 +1,11 @@
 * {
+  font-family: var(--font-poppisn), Arial, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  font-family: Arial, sans-serif; /* Trocar fonte*/
   background-color: #232323;
   color: #333; /* Trocar color*/
   padding: 20px; /* Talvez padding desnecessario */

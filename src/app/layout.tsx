@@ -6,9 +6,10 @@ import Footer from "@/app/components/Footer/Footer";
 import Header from "@/app/components/Header/Header";
 
 const poppins = Poppins({
-  weight: ["300", "400", "500", "600", "700"], // Escolha os pesos que vai usar
+  weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
   display: "swap",
+  variable: "--font-poppins",
 });
 
 export default function RootLayout({
@@ -20,7 +21,7 @@ export default function RootLayout({
     <ReduxProvider>
       <QueryProvider>
         <html>
-          <body className="{poppins.className}">
+          <body className={poppins.className}>
             <Header />
             {children}
             <Footer />

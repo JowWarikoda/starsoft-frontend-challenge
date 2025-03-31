@@ -6,31 +6,18 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import "@/app/components/CartOverlay/CartOverlay.scss";
 
-export default function CartOverlay() {
+interface CartOverlayProps {
+  isOpen: boolean;
+  setIsOpen: (value: boolean) => void;
+}
+
+export default function CartOverlay({ isOpen, setIsOpen }: CartOverlayProps) {
   const cartItems = useAppSelector((state) => state.cart.items);
   const dispatch = useAppDispatch();
-  const [isOpen, setIsOpen] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) return null; // Evita Hydration Mismatch
-
   const totalPrice = cartItems.reduce((sum, item) => sum + item.price, 0);
 
   return (
     <>
-      <button className="cart-button" onClick={() => setIsOpen(!isOpen)}>
-        <Image
-          src="/img/shopcart-icon.svg"
-          alt="Shop Cart Icon"
-          width={33}
-          height={33}
-        />
-      </button>
-
       {isOpen && (
         <div className="overlay-background" onClick={() => setIsOpen(false)} />
       )}
@@ -72,12 +59,15 @@ export default function CartOverlay() {
                     <p>{item.price} ETH</p>
                   </div>
                 </div>
-                <button onClick={() => dispatch(removeFromCart(item.id))}>
+                <button
+                  className="trash-icon"
+                  onClick={() => dispatch(removeFromCart(item.id))}
+                >
                   <Image
                     src="/img/Trash-icon.svg"
                     alt="Trash Icon"
-                    height={43}
-                    width={43}
+                    height={22}
+                    width={22}
                   />
                 </button>
               </div>
@@ -88,13 +78,15 @@ export default function CartOverlay() {
         <div className="cart-footer">
           <h3>
             TOTAL:
-            <Image
-              src="/img/eth-icon.svg"
-              alt="ETH Icon"
-              height={34}
-              width={34}
-            />{" "}
-            {totalPrice} ETH
+            <div className="cart-footer-price">
+              <Image
+                src="/img/eth-icon.svg"
+                alt="ETH Icon"
+                height={34}
+                width={34}
+              />{" "}
+              {totalPrice} ETH
+            </div>
           </h3>
           <button className="checkout-button">Finalizar Compra</button>
         </div>

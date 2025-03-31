@@ -36,22 +36,28 @@ export default function CardNFT({ nft }: NFTCardProps) {
           priority
         />
       </div>
+      <div className="product-info-container">
+        {/* Nome e Descrição */}
+        <div className="product-info">
+          <h3>{nft.name}</h3>
+          <p>{nft.description}</p>
+        </div>
 
-      {/* Nome e Descrição */}
-      <div className="product-info">
-        <h3>{nft.name}</h3>
-        <p>{nft.description}</p>
+        {/* Preço */}
+        <div className="product-price">
+          <Image
+            src="/img/eth-icon.svg"
+            alt="ETH Icon"
+            width={24}
+            height={24}
+          />
+          <span>{nft.price} ETH</span>
+        </div>
+
+        <button className="buy-button" onClick={handleAddToCart}>
+          Comprar
+        </button>
       </div>
-
-      {/* Preço */}
-      <div className="product-price">
-        <Image src="/img/eth-icon.svg" alt="ETH Icon" width={24} height={24} />
-        <span>{nft.price} ETH</span>
-      </div>
-
-      <button className="buy-button" onClick={handleAddToCart}>
-        Comprar
-      </button>
     </div>
   );
 }
