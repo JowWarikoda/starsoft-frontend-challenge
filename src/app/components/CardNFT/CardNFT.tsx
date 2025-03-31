@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useAppDispatch } from "@/app/redux/store";
 import { addToCart } from "@/app/redux/cartSlice";
 import Image from "next/image";
@@ -20,8 +21,12 @@ interface NFTCardProps {
 export default function CardNFT({ nft }: NFTCardProps) {
   const dispatch = useAppDispatch();
 
+  // Estado para controlar o texto do botão
+  const [buttonText, setButtonText] = useState("Comprar");
+
   const handleAddToCart = () => {
     dispatch(addToCart(nft));
+    setButtonText("Adicionado ao Carrinho");
   };
 
   return (
@@ -55,7 +60,7 @@ export default function CardNFT({ nft }: NFTCardProps) {
         </div>
 
         <button className="buy-button" onClick={handleAddToCart}>
-          <p className="buy-button-text">Comprar</p>
+          <p className="buy-button-text">{buttonText}</p>
         </button>
       </div>
     </div>
