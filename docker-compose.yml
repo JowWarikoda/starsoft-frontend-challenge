@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: starsoft-marketplace
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    restart: unless-stopped # Garante que o contêiner reinicie automaticamente caso pare inesperadamente.
