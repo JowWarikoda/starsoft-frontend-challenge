@@ -55,7 +55,7 @@ export default function CardNFT({ nft }: NFTCardProps) {
         </div>
 
         <button className="buy-button" onClick={handleAddToCart}>
-          Comprar
+          <p className="buy-button-text">Comprar</p>
         </button>
       </div>
     </div>

@@ -92,6 +92,10 @@
     height: 66px;
     width: 296px;
 
+    .buy-button-text {
+      text-transform: uppercase;
+    }
+
     &:hover {
       background: darken($primary-color, 10%);
     }
